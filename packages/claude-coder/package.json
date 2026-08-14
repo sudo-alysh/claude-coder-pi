@@ -1,0 +1,118 @@
+{
+  "name": "claude-coder",
+  "version": "1.4.1-local",
+  "description": "Private Claude Code-inspired Pi interface without image-pasting dependencies.",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "claude-code",
+    "pi",
+    "tool-renderer",
+    "mcp",
+    "terminal-images",
+    "tool-groups",
+    "math-rendering",
+    "latex",
+    "keybindings",
+    "shiki",
+    "diff"
+  ],
+  "license": "MIT",
+  "author": "Tim van den Hoorn",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timvdhoorn/cc-my-pi.git"
+  },
+  "homepage": "https://github.com/timvdhoorn/cc-my-pi#readme",
+  "bugs": {
+    "url": "https://github.com/timvdhoorn/cc-my-pi/issues"
+  },
+  "files": [
+    "extensions/index.ts",
+    "extensions/spinner.ts",
+    "extensions/task-and-tool-presentation.ts",
+    "extensions/pi-tasks",
+    "extensions/cc-my-pi-settings-ui.ts",
+    "extensions/companion-packages.ts",
+    "extensions/pi-agent-settings.ts",
+    "extensions/session-commands.ts",
+    "extensions/update-check.ts",
+    "extensions/copy-command.ts",
+    "extensions/esc-steer.ts",
+    "extensions/double-esc-clear.ts",
+    "extensions/user-message-render.ts",
+    "extensions/bash-execution-render.ts",
+    "extensions/claude-header/index.ts",
+    "extensions/claude-header/render-utils.ts",
+    "extensions/claude-header/pi-mascot.ts",
+    "extensions/claude-header/loaded-stats.ts",
+    "extensions/statusline/shared/settings.ts",
+    "extensions/statusline/shared/dashboard-state.ts",
+    "extensions/statusline/model-info/index.ts",
+    "extensions/statusline/git-info/index.ts",
+    "extensions/statusline/git-info/src/changed-files-view.ts",
+    "extensions/statusline/git-info/src/process.ts",
+    "extensions/statusline/git-info/src/refresh-coordinator.ts",
+    "extensions/statusline/git-info/src/runtime.ts",
+    "extensions/statusline/ui-customization/index.ts",
+    "themes/cc-my-pi-dark.json",
+    "config/config.example.json",
+    "README.md",
+    "CHANGELOG.md",
+    "extensions/queue-steer/index.ts",
+    "extensions/queue-steer/editor-render.ts",
+    "extensions/queue-steer/queue-state.ts"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit --allowImportingTsExtensions --target ES2022 --module NodeNext --moduleResolution NodeNext --skipLibCheck extensions/index.ts extensions/spinner.ts extensions/cc-my-pi-settings-ui.ts extensions/companion-packages.ts extensions/esc-steer.ts extensions/double-esc-clear.ts extensions/copy-command.ts extensions/queue-steer/index.ts extensions/claude-header/index.ts extensions/statusline/model-info/index.ts extensions/statusline/git-info/index.ts extensions/statusline/ui-customization/index.ts extensions/bash-execution-render.ts",
+    "test": "node --test --experimental-strip-types extensions/pi-tasks/task-chat.test.ts extensions/task-and-tool-presentation.test.ts extensions/user-message.test.ts extensions/spinner.test.ts extensions/esc-features.test.ts extensions/setup-wizard.test.ts extensions/companion-packages.test.ts extensions/copy-command.test.ts extensions/queue-steer/queue-state.test.ts extensions/queue-steer/editor-render.test.ts extensions/queue-steer/command-rows.test.ts extensions/claude-header/claude-header.test.ts extensions/claude-header/pi-mascot.test.ts extensions/claude-header/loaded-stats.test.ts extensions/pi-agent-settings.test.ts extensions/statusline/git-info/process.test.ts extensions/statusline/git-info/git-segment.test.ts extensions/statusline/git-info/refresh-coordinator.test.ts extensions/bash-execution-render.test.ts extensions/update-check.test.ts extensions/pi-v084-compat.test.ts extensions/statusline/model-info/model-info.test.ts",
+    "pack:dry-run": "npm pack --dry-run",
+    "publish:dry-run": "npm publish --dry-run",
+    "bench:tools": "bun scripts/benchmark-tools.ts"
+  },
+  "dependencies": {
+    "@effect/platform-node": "4.0.0-beta.98",
+    "@shikijs/cli": "^4.0.2",
+    "diff": "^9.0.0",
+    "effect": "4.0.0-beta.98",
+    "ioredis": "^5.7.0",
+    "shiki": "^4.4.1",
+    "typebox": "^1.1.34"
+  },
+  "overrides": {
+    "@effect/platform-node-shared": "4.0.0-beta.98",
+    "brace-expansion": "5.0.9",
+    "protobufjs": "^7.6.5"
+  },
+  "allowScripts": {
+    "protobufjs@7.6.4": true,
+    "protobufjs@7.6.5": true,
+    "@google/genai@1.52.0": true,
+    "msgpackr-extract": true
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "@sinclair/typebox": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/index.ts",
+      "./extensions/spinner.ts"
+    ],
+    "themes": [
+      "./themes/claude-coder-dark.json"
+    ]
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "^0.84.0",
+    "@earendil-works/pi-coding-agent": "^0.84.0",
+    "@earendil-works/pi-tui": "^0.84.0",
+    "@sinclair/typebox": "^0.34.49",
+    "@types/node": "^25.7.0",
+    "typescript": "^6.0.3"
+  },
+  "contributors": [
+    "FammasMaz (original pi-cc-tools / pi-claude-code-ui)"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "pi-usage-bars-safe",
+  "version": "0.2.1-local",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "pi": {
+    "extensions": ["./extensions/usage-bars/index.ts"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  }
+}
