@@ -425,8 +425,8 @@ export default function (pi: ExtensionAPI) {
     const session = clampPercent(data.session);
     const weekly = clampPercent(data.weekly);
 
-    const sessionReset = data.sessionResetsIn ? theme.fg("dim", ` ⟳ ${data.sessionResetsIn}`) : "";
-    const weeklyReset = data.weeklyResetsIn ? theme.fg("dim", ` ⟳ ${data.weeklyResetsIn}`) : "";
+    const sessionReset = data.sessionResetsIn ? theme.fg("accent", ` ⟳ ${data.sessionResetsIn}`) : "";
+    const weeklyReset = data.weeklyResetsIn ? theme.fg("accent", ` ⟳ ${data.weeklyResetsIn}`) : "";
     const staleSuffix = data.stale ? theme.fg("warning", " stale") : "";
     const warningSuffix = data.warning && !data.stale ? theme.fg("warning", " ⚠") : "";
 
@@ -435,11 +435,11 @@ export default function (pi: ExtensionAPI) {
     const weeklyStatus =
       data.weeklyAvailable === false
         ? ""
-        : theme.fg("muted", " · ") +
-          theme.fg(colorForPercent(weekly), `W ${weeklyLeft}% left`) +
+        : theme.fg("accent", " · ") +
+          theme.fg("accent", `W ${weeklyLeft}% left`) +
           weeklyReset;
     const status =
-      theme.fg(colorForPercent(session), `${sessionLeft}% left`) +
+      theme.fg("accent", `${sessionLeft}% left`) +
       sessionReset +
       weeklyStatus +
       staleSuffix +
