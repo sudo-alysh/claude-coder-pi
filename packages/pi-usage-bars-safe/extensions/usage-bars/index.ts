@@ -77,7 +77,7 @@ function renderSessionStats(ctx: any, theme: any, subscription: boolean, thinkin
   const percent = usage?.percent == null ? "?" : Number(usage.percent).toFixed(1);
   parts.push(`ctx ${percent === "?" ? "?" : `${percent}%`}/${formatTokens(contextWindow)} auto`);
   parts.push(`think ${thinkingLevel}`);
-  return theme.fg("dim", parts.join(" · ")); 
+  return theme.fg("accent", parts.join(" · "));
 }
 
 interface SubscriptionItem {
@@ -370,7 +370,7 @@ export default function (pi: ExtensionAPI) {
           state.activeProvider === "codex" || state.activeProvider === "claude",
           pi.getThinkingLevel(),
         );
-        const left = `${theme.fg("dim", `${directory} · `)}${stats}`;
+        const left = `${theme.fg("accent", `${directory} · `)}${stats}`;
         const gap = Math.max(1, width - visibleWidth(left) - visibleWidth(footerStatus));
         return [truncateToWidth(`${left}${" ".repeat(gap)}${footerStatus}`, width, "")];
       },
